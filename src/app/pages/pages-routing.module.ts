@@ -15,7 +15,7 @@ const routes: Routes = [
         component:PersonajesComponent
       },
       {
-        path:'personajes/:termino',
+        path:'personaje/:termino',
         component: BusquedaComponent
       },
       {

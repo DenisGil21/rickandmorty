@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   buscar(termino:string){
     if (termino.length !== 0){
-      this.router.navigateByUrl(`personajes/${termino}`);
+      this.router.navigateByUrl(`personaje/${termino}`);
     }else{
       this.router.navigateByUrl('home');
     }
