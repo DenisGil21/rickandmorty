@@ -11,15 +11,15 @@ export class PersonajesService {
 
   constructor(private http: HttpClient) { }
 
-  getPersonajes(filtro:string = ''){
-    const options = filtro ?
-    { params: new HttpParams().set('name', filtro) } : {};
+  getPersonajes(filtro:string = '', page:number = 1){
 
-    return this.http.get(`${this.url}/character`, options)
-  }
+    let params = new HttpParams();
+    params = params.set('page',page);
+    if (filtro) {
+      params = params.set('name', filtro);
+    }
 
-  getPersonajesPagination(url:string){
-    return this.http.get(url)
+    return this.http.get(`${this.url}/character`, {params})
   }
 
 
