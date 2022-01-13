@@ -18,5 +18,9 @@ export class PersonajesService {
     return this.http.get(`${this.url}/character`, options)
   }
 
+  getPersonajesPagination(url:string){
+    return this.http.get(url)
+  }
+
 
 }
