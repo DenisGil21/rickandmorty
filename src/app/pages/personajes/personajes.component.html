@@ -1,0 +1,23 @@
+
+<div class="row mb-4" *ngIf="personajes.length === 0">
+    <div class="col-12">
+        <div class="alert alert-warning text-center" role="alert">
+            <h4 class="alert-heading">No se encontraron resultados</h4>
+            <i class="fas fa-exclamation-circle fa-2x"></i>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+      <div *ngFor="let personaje of personajes" class="col-sm-4 mb-4">
+        <div class="card" style="width: 18rem;">
+            <img [src]="personaje.image" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{personaje.name}}</h5>
+                <p class="card-text">{{personaje.status}}</p>
+                <p class="card-text">{{personaje.type}}</p>
+                <p class="card-text">{{personaje.gender}}</p>
+            </div>
+          </div>
+      </div>
+  </div>
