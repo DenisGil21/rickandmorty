@@ -12,6 +12,8 @@ export class PersonajesComponent implements OnInit, OnChanges {
 
   public personajes: any = [];
   public info:any;
+
+  public cargando:boolean = true;
   
   constructor(private personajesService: PersonajesService) { }
 
@@ -26,20 +28,24 @@ export class PersonajesComponent implements OnInit, OnChanges {
   
 
   obtenerPersonajes(){
+    this.cargando = true;
     this.personajesService.getPersonajes(this.busqueda)
     .subscribe((resp:any) => {
       this.personajes = resp.results;
       this.info = resp.info;
+      this.cargando = false;
       console.log(resp);
       
     });
   }
 
   cambiarPagina(url:string){
+    this.cargando = true;
     this.personajesService.getPersonajesPagination(url)
     .subscribe((resp:any) => {
       this.personajes = resp.results;
-      this.info = resp.info;      
+      this.info = resp.info;    
+      this.cargando = false;
     })
   }
 
