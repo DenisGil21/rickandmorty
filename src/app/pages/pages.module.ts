@@ -5,6 +5,7 @@ import { PersonajesComponent } from './personajes/personajes.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -17,11 +18,10 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    SharedModule
+    SharedModule,
+    ComponentsModule
   ],
   exports:[
-    HomeComponent,
-    BusquedaComponent
   ]
 })
 export class PagesModule { }

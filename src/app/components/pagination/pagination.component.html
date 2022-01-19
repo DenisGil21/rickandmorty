@@ -1,0 +1,7 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" style="cursor: pointer;" [ngClass]="{'disabled':!data_pages.prev}"><a class="page-link"  (click)="cambiarPagina(-1)">Anterior</a></li>
+      <li *ngFor="let i of pagesNumber()" style="cursor: pointer;" class="page-item" [ngClass]="{'active': current_page==i}"><a class="page-link" (click)="cambiarPagina(i, true)">{{i}}</a></li>
+      <li class="page-item" style="cursor: pointer;" [ngClass]="{'disabled':!data_pages.next}"><a class="page-link"  (click)="cambiarPagina(1)">Siguiente</a></li>
+    </ul>
+  </nav>

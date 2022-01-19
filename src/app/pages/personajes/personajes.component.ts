@@ -23,7 +23,7 @@ export class PersonajesComponent implements OnInit, OnChanges {
     this.obtenerPersonajes(this.busqueda,this.current_page);
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(): void {        
     this.obtenerPersonajes(this.busqueda,this.current_page);
 
   }
@@ -44,32 +44,9 @@ export class PersonajesComponent implements OnInit, OnChanges {
       });
   }
 
-  cambiarPagina(cambio: number, especifico = false): void {
-    if (!especifico) {
-      this.current_page += cambio;
-    } else {
-      this.current_page = cambio;
-    }
+  cambiarPagina(event:number){
+    this.current_page = event;
     this.obtenerPersonajes(this.busqueda,this.current_page);
-  }
-
-  pagesNumber(): number[] {
-    let desde = this.current_page - 2;
-    if (desde < 1) {
-      desde = 1;
-    }
-
-    let hasta = desde + 9;
-    if (hasta >= this.info.pages) {
-      hasta = this.info.pages;
-    }
-    let pageArray: any[] = [];
-    while (desde <= hasta) {
-      pageArray.push(desde);
-      desde++;
-    }
-
-    return pageArray;
   }
 
 }
