@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PersonajesService } from '../../services/personajes.service';
 import { Personaje, Info } from '../../interfaces/personaje.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-personajes',
@@ -13,16 +13,20 @@ export class PersonajesComponent implements OnInit {
   public personajes: Personaje[] = [];
   public info!: Info;
   public current_page: number = 1;
-  private busqueda:string = '';
 
   public cargando: boolean = true;
 
-  constructor(private personajesService: PersonajesService, private activatedRoute: ActivatedRoute) { }
+  constructor(private personajesService: PersonajesService, private activatedRoute: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams
-    .subscribe(params => {
-      this.obtenerPersonajes(params.busqueda,this.current_page);
+    .subscribe(params => {      
+      let paramsArr = Object.keys(params);
+      if (paramsArr.indexOf('page') === 0 && params.busqueda) {
+        this.router.navigate([], {queryParams:{page:null}});
+      }
+          
+      this.obtenerPersonajes(params.busqueda,params.page);
     });
   }
 
@@ -41,11 +45,6 @@ export class PersonajesComponent implements OnInit {
         this.cargando = false;
         this.personajes = [];
       });
-  }
-
-  cambiarPagina(event:number){
-    this.current_page = event;
-    this.obtenerPersonajes(this.busqueda,this.current_page);
   }
 
 }

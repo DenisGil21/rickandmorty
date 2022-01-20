@@ -18,10 +18,10 @@ export class BuscadorComponent implements OnInit, AfterViewInit {
   
   ngAfterViewInit(): void {
     this.busquedaValue.nativeElement.value = this.activatedRoute.snapshot.queryParamMap.get('busqueda') || '';
-    this.cdRef.detectChanges();
   }
 
   buscar(){
+    // merge se utiliza para poder combinar parametros opcionales
     const termino = this.busquedaValue.nativeElement.value;
     if(termino.length === 0){
       this.router.navigate([], {queryParams:{busqueda:null},queryParamsHandling: 'merge'});
