@@ -31,7 +31,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   pagesNumber(): number[] {
 
-    let desde = this.current_page - 7;
+    let desde = this.current_page - 6;
     if (desde < 1) {
       desde = 1;
     }
