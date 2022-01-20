@@ -1,32 +1,31 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PersonajesService } from '../../services/personajes.service';
 import { Personaje, Info } from '../../interfaces/personaje.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-personajes',
   templateUrl: './personajes.component.html',
   styleUrls: ['./personajes.component.css']
 })
-export class PersonajesComponent implements OnInit, OnChanges {
-
-  @Input() busqueda: string = '';
+export class PersonajesComponent implements OnInit {
 
   public personajes: Personaje[] = [];
   public info!: Info;
   public current_page: number = 1;
+  private busqueda:string = '';
 
   public cargando: boolean = true;
 
-  constructor(private personajesService: PersonajesService) { }
+  constructor(private personajesService: PersonajesService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.obtenerPersonajes(this.busqueda,this.current_page);
+    this.activatedRoute.queryParams
+    .subscribe(params => {
+      this.obtenerPersonajes(params.busqueda,this.current_page);
+    });
   }
 
-  ngOnChanges(): void {        
-    this.obtenerPersonajes(this.busqueda,this.current_page);
-
-  }
 
 
 

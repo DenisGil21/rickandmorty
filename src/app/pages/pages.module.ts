@@ -4,7 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { PersonajesComponent } from './personajes/personajes.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { BusquedaComponent } from './busqueda/busqueda.component';
 import { ComponentsModule } from '../components/components.module';
 
 
@@ -13,7 +12,6 @@ import { ComponentsModule } from '../components/components.module';
   declarations: [
     HomeComponent,
     PersonajesComponent,
-    BusquedaComponent
   ],
   imports: [
     CommonModule,

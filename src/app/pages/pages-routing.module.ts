@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PersonajesComponent } from './personajes/personajes.component';
-import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const routes: Routes = [
   {
@@ -13,10 +12,6 @@ const routes: Routes = [
       {
         path: 'home',
         component:PersonajesComponent
-      },
-      {
-        path:'personaje/:termino',
-        component: BusquedaComponent
       },
       {
         path: '',

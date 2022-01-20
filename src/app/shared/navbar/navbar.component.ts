@@ -8,18 +8,11 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  buscar(termino:string){
-    if (termino.length !== 0){
-      this.router.navigateByUrl(`personaje/${termino}`);
-    }else{
-      this.router.navigateByUrl('home');
-    }
-  }
 
 
 

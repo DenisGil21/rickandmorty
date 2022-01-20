@@ -8,9 +8,8 @@
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           
         </ul>
-        <form class="d-flex" (ngSubmit)="buscar(txtTermino.value)">
-          <input #txtTermino class="form-control me-2" type="search" placeholder="Buscar personaje" aria-label="Search">
-          <button class="btn btn-primary" type="submit">Buscar</button>
+        <form class="d-flex">
+          <app-buscador [placeholder]="'Buscar personaje'"></app-buscador>
         </form>
       </div>
     </div>
