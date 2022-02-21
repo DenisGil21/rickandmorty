@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { Info } from '../../interfaces/personaje.interface';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pagination',
@@ -9,12 +9,21 @@ import { Router } from '@angular/router';
 })
 export class PaginationComponent implements OnInit, OnChanges {
 
-  @Input() current_page: number = 1;
+  public current_page: number = 1;
   @Input() data_pages!: Info;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams
+    .subscribe(params => {
+      if (!params.page) {
+        this.current_page = 1;
+      }else{
+        this.current_page = params.page;
+      }
+      
+    });
   }
 
   ngOnChanges(): void {

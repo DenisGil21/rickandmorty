@@ -22,11 +22,12 @@ export class BuscadorComponent implements OnInit, AfterViewInit {
 
   buscar(){
     // merge se utiliza para poder combinar parametros opcionales
+    // aqui se quito el merge para que la busqueda empiece sin ningun otro parametro
     const termino = this.busquedaValue.nativeElement.value;
     if(termino.length === 0){
-      this.router.navigate([], {queryParams:{busqueda:null},queryParamsHandling: 'merge'});
+      this.router.navigate([], {queryParams:{busqueda:null}});
       return;
     }
-    this.router.navigate([], {queryParams:{busqueda:termino},queryParamsHandling: 'merge'});
+    this.router.navigate([], {queryParams:{busqueda:termino}});
   }
 }

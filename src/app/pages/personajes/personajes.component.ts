@@ -12,7 +12,6 @@ export class PersonajesComponent implements OnInit {
 
   public personajes: Personaje[] = [];
   public info!: Info;
-  public current_page: number = 1;
 
   public cargando: boolean = true;
 
@@ -23,7 +22,7 @@ export class PersonajesComponent implements OnInit {
     .subscribe(params => {      
       let paramsArr = Object.keys(params);
       if (paramsArr.indexOf('page') === 0 && params.busqueda) {
-        this.router.navigate([], {queryParams:{page:null}});
+        this.router.navigate([], {queryParams:{page:null, busqueda: params.busqueda}});
       }
           
       this.obtenerPersonajes(params.busqueda,params.page);
